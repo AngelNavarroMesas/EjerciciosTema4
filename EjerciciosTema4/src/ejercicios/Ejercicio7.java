@@ -4,20 +4,30 @@ import java.util.Scanner;
 
 public class Ejercicio7 {
 
-	static int esPrimo(int n) {
+	
+static boolean esPrimo(int x) {
 		
-		int div = 0;
 		boolean primo = true;
 		
-		for(int x=1;x<n;x++) {
+		for(int i=2;i<x;i++) {
+			if(x%i==0) {
+				primo=false;
+			}
+		}
+		
+		return primo;
+	}
+	
+	
+	static int divisores(int n) {
+		
+		int div = 0;
+		
+		for(int x=1;x<=n;x++) {
 			
 			if(n%x==0) {
-				for(int i=2;i<x;i++) {
-					if(n%i==0) {
-						primo = false;
-					}
-				}
-				if(primo==true) {
+				
+				if(esPrimo(x)==true) {
 					div++;
 				}
 			}
@@ -36,9 +46,11 @@ public class Ejercicio7 {
 		n = sc.nextInt();
 		
 		
-		System.out.println("El numero introducido tiene "+esPrimo(n)+" divisores primos");
+		System.out.println("El numero introducido tiene "+divisores(n)+" divisores primos");
 		
 		sc.close();
 	}
+	
+	
 
 }
